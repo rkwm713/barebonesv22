@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barebones Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pole Data Processor</h1>
+            <p>Upload your JSON file to generate an Excel report.</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <h2>Upload JSON File</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="file-drop-area">
+                        <span class="file-msg">Drag & drop your JSON file here, or click to select.</span>
+                        <input type="file" name="file" id="file-input" accept=".json" required>
+                    </div>
+                    <button type="submit" id="process-button">Process File</button>
+                </form>
+            </section>
+
+            <section class="results-section" id="results-section" style="display: none;">
+                <h2>Processing Results</h2>
+                <div id="status-message"></div>
+                <div id="download-links">
+                    <!-- Download links will be populated here by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Pole Data Solutions</p>
+        </footer>
+    </div>
+
+    <div id="loader" class="loader-overlay" style="display: none;">
+        <div class="loader-spinner"></div>
+        <p>Processing, please wait...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

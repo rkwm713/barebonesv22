@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-selfcheck.json
+
+# Build artifacts
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Flask specific
+instance/
+.webassets-cache
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Heroku specific
+uploads/ # Temporary uploaded files
+*.xlsx # Generated Excel files (should be served temporarily)
+*.txt # Generated log files (should be served temporarily, except runtime.txt and requirements.txt)
+# Keep Procfile, requirements.txt, runtime.txt
+
+# Specific files to ignore if they are not part of the source
+# For example, if CPS_6457E_03.json is a sample input file,
+# you might want to ignore all .json files in the root or uploads.
+# *.json # Be careful with this if you have JSON config files you need.
+
+# Environment variables
+.env
+.venv
