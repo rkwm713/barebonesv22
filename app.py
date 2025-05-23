@@ -6,14 +6,19 @@ import barebones  # Your existing script
 
 app = Flask(__name__)
 
-# Configuration
-UPLOAD_FOLDER = 'uploads'
-# DOWNLOAD_FOLDER is now determined by barebones.FileProcessor instance
+# Configuration for UPLOAD_FOLDER
+if os.environ.get('DYNO'):  # Heroku environment
+    UPLOAD_FOLDER = '/tmp/uploads' # Use /tmp on Heroku for uploads
+else: # Local environment
+    UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Ensure upload directory exists
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-# The barebones.FileProcessor will create its own downloads_path (e.g., /tmp or tmp_output)
+# Ensure upload directory exists (especially for local development)
+# On Heroku, /tmp should exist, but /tmp/uploads might not.
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+print(f"DEBUG: Flask app UPLOAD_FOLDER set to: {app.config['UPLOAD_FOLDER']}")
+
+# DOWNLOAD_FOLDER is determined by barebones.FileProcessor instance
 
 @app.route('/')
 def index():
